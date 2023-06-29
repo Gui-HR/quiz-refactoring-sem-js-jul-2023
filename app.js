@@ -5,28 +5,42 @@ const form = document.querySelector('.quiz-form')
 
 let score = null
 
+// Pega as respostas do usuario
 const getUserAnswers = () => {
   const userAnswers = []
 
+  // Passa pelas respostas certas, não usa o elemento mas usa o index  
   correctAnswers.forEach((_, index) => {
+
+    // Cria uma variavel com a resposta do usuario 
     const userAnswer = form[`inputQuestion${index + 1}`].value
+
+    // Atribui a resposta coletada a um array
     userAnswers.push(userAnswer)
   })
 
+  // Retorna um array com as respostas do usuario
   return userAnswers
 }
 
+// Calcula os pontos do usuario com base nas respostas coletadas
 const calculateUserScore = userAnswers => {
   score = 0
+
+  // Passa por cada respostas coletada (Poderia usar reduce())
   userAnswers.forEach((userAnswer, index) => {
+
+    // Verifica se e resposta do usuario esta correta
     const isUserAnswerCorrect = userAnswer === correctAnswers[index]
 
+    // Atribui +25 para cada resposta correta
     if (isUserAnswerCorrect) {
       score += 25
     }
   })
 }
 
+// Exibe a pontuação do usuario (Não sei como faz isso)
 const showFinalScore = () => {
   scrollTo({
     top: 0,
@@ -37,6 +51,7 @@ const showFinalScore = () => {
   finalScoreContainer.classList.remove('d-none')
 }
 
+// Anima a pontuação final (Tabmem não sei como funciona)
 const animateFinalScore = () => {
   let counter = 0
 
