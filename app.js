@@ -3,25 +3,7 @@ const finalScoreContainer = document.querySelector('.final-score-container')
 const scoreContent = finalScoreContainer.querySelector('.score')
 const form = document.querySelector('.quiz-form')
 
-let score = null
-
-// Pega as respostas do usuario
-const getUserAnswers = () => {
-  const userAnswers = []
-
-  // Passa pelas respostas certas, não usa o elemento mas usa o index  
-  correctAnswers.forEach((_, index) => {
-
-    // Cria uma variavel com a resposta do usuario 
-    const userAnswer = form[`inputQuestion${index + 1}`].value
-
-    // Atribui a resposta coletada a um array
-    userAnswers.push(userAnswer)
-  })
-
-  // Retorna um array com as respostas do usuario
-  return userAnswers
-}
+const getUserAnswers = () => {return correctAnswers.map((_, index) => {return form[`inputQuestion${index + 1}`].value})}
 
 // Calcula os pontos do usuario com base nas respostas coletadas
 const calculateUserScore = userAnswers => {
